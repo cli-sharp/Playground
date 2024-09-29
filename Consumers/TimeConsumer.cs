@@ -2,6 +2,7 @@
 using Playground.Contracts;
 using StackExchange.Redis;
 using Newtonsoft.Json;
+using Playground.Contexts;
 
 namespace Playground.Consumers;
 
@@ -9,8 +10,10 @@ public class TimeConsumer : IConsumer<TimeContract>
 {
     private readonly ConnectionMultiplexer connectionMultiplexer;
 
-    public TimeConsumer(ConnectionMultiplexer connectionMultiplexer)
+    public TimeConsumer(ConnectionMultiplexer connectionMultiplexer, UserContext context)
     {
+        var test = context.Users.Find("Christian");
+
         this.connectionMultiplexer = connectionMultiplexer;
     }
 

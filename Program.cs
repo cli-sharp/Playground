@@ -1,8 +1,13 @@
 using System.Reflection;
 using MassTransit;
+using Microsoft.EntityFrameworkCore;
+using Playground.Contexts;
 using StackExchange.Redis;
 
 var builder = WebApplication.CreateBuilder(args);
+
+builder.Services.AddDbContextPool<UserContext>(opt =>
+    opt.UseNpgsql("Host=localhost; Username=postgres; Password=postgres"));
 
 builder.Services.AddSingleton<ConnectionMultiplexer>(provider => ConnectionMultiplexer.Connect("localhost"));
 
