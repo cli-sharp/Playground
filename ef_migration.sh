@@ -1,3 +1,3 @@
 #!/bin/bash
-dotnet ef migrations add InitialMigration
+dotnet ef migrations
 dotnet ef database update
