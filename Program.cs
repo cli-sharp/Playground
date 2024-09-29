@@ -7,15 +7,15 @@ using StackExchange.Redis;
 var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddDbContextPool<UserContext>(opt =>
-    opt.UseNpgsql("Host=localhost; Username=postgres; Password=postgres"));
+    opt.UseNpgsql("Host=postgres; Username=postgres; Password=postgres"));
 
-builder.Services.AddSingleton<ConnectionMultiplexer>(provider => ConnectionMultiplexer.Connect("localhost"));
+builder.Services.AddSingleton<ConnectionMultiplexer>(provider => ConnectionMultiplexer.Connect("redis"));
 
 builder.Services.AddMassTransit(configurator =>
 {
     configurator.UsingRabbitMq((context,cfg) =>
     {
-        cfg.Host("localhost");
+        cfg.Host("rabbitmq");
         cfg.ConfigureEndpoints(context);
     });
 
