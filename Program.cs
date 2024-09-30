@@ -1,4 +1,4 @@
-using System.Reflection;
+﻿using System.Reflection;
 using MassTransit;
 using Microsoft.EntityFrameworkCore;
 using Playground.Data;
@@ -13,7 +13,7 @@ builder.Services.AddSingleton<ConnectionMultiplexer>(provider => ConnectionMulti
 
 builder.Services.AddMassTransit(configurator =>
 {
-    configurator.UsingRabbitMq((context,cfg) =>
+    configurator.UsingRabbitMq((context, cfg) =>
     {
         cfg.Host("localhost");
         cfg.ConfigureEndpoints(context);

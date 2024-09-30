@@ -1,10 +1,10 @@
-﻿using MassTransit;
-using Playground.Contracts;
-using StackExchange.Redis;
-using Newtonsoft.Json;
-using Playground.Data;
+﻿namespace Playground.Consumers;
 
-namespace Playground.Consumers;
+using MassTransit;
+using Newtonsoft.Json;
+using Playground.Contracts;
+using Playground.Data;
+using StackExchange.Redis;
 
 public class TimeConsumer : IConsumer<TimeContract>
 {
@@ -25,7 +25,7 @@ public class TimeConsumer : IConsumer<TimeContract>
         await context.RespondAsync(new TimeContract()
         {
             Time = JsonConvert.DeserializeObject<DateTime>(
-                await connectionMultiplexer.GetDatabase().StringGetAsync("Time"))
+                await connectionMultiplexer.GetDatabase().StringGetAsync("Time")),
         });
     }
 }

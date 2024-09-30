@@ -1,7 +1,7 @@
-﻿using Microsoft.EntityFrameworkCore;
-using Playground.Entities;
+﻿namespace Playground.Data;
 
-namespace Playground.Data;
+using Microsoft.EntityFrameworkCore;
+using Playground.Entities;
 
 public class UserContext(DbContextOptions options) : DbContext(options)
 {
