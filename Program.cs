@@ -1,10 +1,4 @@
-﻿using System.Reflection;
-using MassTransit;
-using Microsoft.EntityFrameworkCore;
-using Playground.Data;
-using StackExchange.Redis;
-
-var builder = WebApplication.CreateBuilder(args);
+﻿var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddDbContextPool<UserContext>(opt =>
     opt.UseNpgsql("Host=localhost; Username=postgres; Password=postgres"));

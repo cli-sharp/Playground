@@ -1,10 +1,5 @@
 ﻿namespace Playground.Controllers;
 
-using MassTransit;
-using Microsoft.AspNetCore.Mvc;
-using Playground.Contracts;
-using Playground.Models;
-
 [ApiController]
 [Route("[controller]")]
 public class TimeController : ControllerBase

@@ -1,11 +1,5 @@
 ﻿namespace Playground.Consumers;
 
-using MassTransit;
-using Newtonsoft.Json;
-using Playground.Contracts;
-using Playground.Data;
-using StackExchange.Redis;
-
 public class TimeConsumer : IConsumer<TimeContract>
 {
     private readonly ConnectionMultiplexer connectionMultiplexer;
