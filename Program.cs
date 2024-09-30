@@ -1,7 +1,7 @@
 using System.Reflection;
 using MassTransit;
 using Microsoft.EntityFrameworkCore;
-using Playground.Contexts;
+using Playground.Data;
 using StackExchange.Redis;
 
 var builder = WebApplication.CreateBuilder(args);

@@ -2,7 +2,7 @@
 using Playground.Contracts;
 using StackExchange.Redis;
 using Newtonsoft.Json;
-using Playground.Contexts;
+using Playground.Data;
 
 namespace Playground.Consumers;
 
