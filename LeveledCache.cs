@@ -8,14 +8,7 @@ public class LeveledCache(IMemoryCache memory, ConnectionMultiplexer redis)
         ArgumentNullException.ThrowIfNull(key, nameof(value));
         ArgumentOutOfRangeException.ThrowIfLessThanOrEqual(expiration, TimeSpan.Zero, nameof(expiration));
 
-        memory.Set(
-            key,
-            value,
-            new MemoryCacheEntryOptions()
-            {
-                AbsoluteExpirationRelativeToNow = expiration,
-            });
-
+        memory.Set(key, value, expiration);
         await redis.GetDatabase().StringSetAsync(key, value, expiration);
     }
 
@@ -31,14 +24,7 @@ public class LeveledCache(IMemoryCache memory, ConnectionMultiplexer redis)
             redisEntry.Value.HasValue &&
             redisEntry.Expiry > TimeSpan.Zero)
         {
-            memory.Set(
-                key,
-                redisEntry.Value,
-                new MemoryCacheEntryOptions()
-                {
-                    AbsoluteExpirationRelativeToNow = redisEntry.Expiry,
-                });
-
+            memory.Set(key, redisEntry.Value, redisEntry.Expiry.Value);
             return redisEntry.Value;
         }
 
