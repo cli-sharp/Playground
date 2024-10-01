@@ -4,6 +4,7 @@ global using System.Reflection;
 global using MassTransit;
 global using Microsoft.AspNetCore.Mvc;
 global using Microsoft.EntityFrameworkCore;
+global using Microsoft.Extensions.Caching.Memory;
 global using Newtonsoft.Json;
 global using Playground.Contracts;
 global using Playground.Data;
