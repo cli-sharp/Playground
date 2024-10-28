@@ -16,7 +16,10 @@ var drivers = (await api.CallAsync<IEnumerable<Geotab.Checkmate.ObjectModel.User
     typeof(Geotab.Checkmate.ObjectModel.User),
     new
     {
-        fromVersion = 0,
+        search = new UserSearch()
+        {
+            UserSearchType = UserSearchType.Driver,
+        },
     })).
     Select(user => user as Driver).
     Where(driver => string.IsNullOrWhiteSpace(driver?.Keys?.FirstOrDefault()?.SerialNumber) is false);
