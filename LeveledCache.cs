@@ -30,4 +30,12 @@ public class LeveledCache(IMemoryCache memory, ConnectionMultiplexer redis)
 
         return null;
     }
+
+    public async Task DeleteAsync(string key)
+    {
+        ArgumentNullException.ThrowIfNull(key, nameof(key));
+
+        memory.Remove(key);
+        await redis.GetDatabase().KeyDeleteAsync(key);
+    }
 }
