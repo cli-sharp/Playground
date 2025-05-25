@@ -16,6 +16,12 @@ builder.Services.AddMassTransit(configurator =>
     configurator.AddConsumers(Assembly.GetExecutingAssembly());
 });
 
+builder.Services.AddStackExchangeRedisCache(options =>
+{
+    options.Configuration = "localhost";
+});
+builder.Services.AddHybridCache();
+
 builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
